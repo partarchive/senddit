@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'factory_girl'
+
+module Seeds
+  class SamplePosts
+    def self.run
+      25.times do |n|
+        post = Factory(:post)
+      end
+    end
+  end
+end
+
+Seeds::SamplePosts.run

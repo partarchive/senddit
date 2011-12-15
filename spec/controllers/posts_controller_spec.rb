@@ -24,7 +24,7 @@ describe PostsController do
   # Post. As you add validations to Post, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    build(:post).attributes
   end
 
   describe "GET index" do
@@ -37,7 +37,7 @@ describe PostsController do
 
   describe "GET show" do
     it "assigns the requested post as @post" do
-      post = Post.create! valid_attributes
+      post = create(:post)
       get :show, :id => post.id
       assigns(:post).should eq(post)
     end
@@ -52,7 +52,7 @@ describe PostsController do
 
   describe "GET edit" do
     it "assigns the requested post as @post" do
-      post = Post.create! valid_attributes
+      post = create(:post)
       get :edit, :id => post.id
       assigns(:post).should eq(post)
     end
@@ -98,7 +98,7 @@ describe PostsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested post" do
-        post = Post.create! valid_attributes
+        post = create(:post)
         # Assuming there are no other posts in the database, this
         # specifies that the Post created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -108,13 +108,13 @@ describe PostsController do
       end
 
       it "assigns the requested post as @post" do
-        post = Post.create! valid_attributes
+        post = create(:post)
         put :update, :id => post.id, :post => valid_attributes
         assigns(:post).should eq(post)
       end
 
       it "redirects to the post" do
-        post = Post.create! valid_attributes
+        post = create(:post)
         put :update, :id => post.id, :post => valid_attributes
         response.should redirect_to(post)
       end
@@ -122,7 +122,7 @@ describe PostsController do
 
     describe "with invalid params" do
       it "assigns the post as @post" do
-        post = Post.create! valid_attributes
+        post = create(:post)
         # Trigger the behavior that occurs when invalid params are submitted
         Post.any_instance.stub(:save).and_return(false)
         put :update, :id => post.id, :post => {}
@@ -130,7 +130,7 @@ describe PostsController do
       end
 
       it "re-renders the 'edit' template" do
-        post = Post.create! valid_attributes
+        post = create(:post)
         # Trigger the behavior that occurs when invalid params are submitted
         Post.any_instance.stub(:save).and_return(false)
         put :update, :id => post.id, :post => {}
@@ -141,14 +141,14 @@ describe PostsController do
 
   describe "DELETE destroy" do
     it "destroys the requested post" do
-      post = Post.create! valid_attributes
+      post = create(:post)
       expect {
         delete :destroy, :id => post.id
       }.to change(Post, :count).by(-1)
     end
 
     it "redirects to the posts list" do
-      post = Post.create! valid_attributes
+      post = create(:post)
       delete :destroy, :id => post.id
       response.should redirect_to(posts_url)
     end

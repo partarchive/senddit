@@ -2,11 +2,7 @@ require 'spec_helper'
 
 describe "posts/show.html.erb" do
   before(:each) do
-    @post = assign(:post, stub_model(Post,
-      :title => "Title",
-      :link => "Link",
-      :email => "Email"
-    ))
+    @post = create(:post)
   end
 
   it "renders attributes in <p>" do

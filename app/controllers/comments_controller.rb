@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :get_post
-  
+
   def get_post
     @post = Post.find(params[:post_id])
   end
@@ -50,10 +50,11 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to [@post, @comment], notice: 'Comment was successfully created.' }
-        format.json { render json: [@post, @comment], status: :created, location: [@post, @comment] }
+        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+        format.json { render json: @post, status: :created, location: [@post, @comment] }
       else
-        format.html { render action: "new" }
+        flash[:comment] = @comment
+        format.html { redirect_to @post, notice: 'errors you fool'}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

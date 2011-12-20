@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :comment do
-    post nil
+    post 
     text "MyText"
-    email "MyString"
+    email "moo@moo.com"
   end
 end

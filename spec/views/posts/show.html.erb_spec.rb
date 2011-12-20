@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "posts/show.html.erb" do
   before(:each) do
     @post = create(:post)
+    @comment = create(:comment, :post => @post)
   end
 
   it "renders attributes in <p>" do

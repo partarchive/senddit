@@ -2,14 +2,23 @@
   <div class="fill">
     <div class="container">
       <a href="#" class="brand">Senddit</a>
-      <div class="pull-right" style="color: white;">
+      <div class="pull-right">
         <% if user_signed_in? %>
-          Hello, <%= current_user.email %>
-          <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+          <ul class="secondary-nav">
+            <li class="dropdown" data-dropdown="dropdown">
+              <a href="#" class="dropdown-toggle"><%= current_user.email %></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+                </li>
+              </ul>
+            </li>
+          </ul>
         <% else %>
           <%= form_tag user_session_path do %>
-            <%= text_field_tag :email %>
-            <%= password_field_tag :password %>
+            <%= text_field_tag "user[email]", '', class: "input-small", placeholder: "Email" %>
+            <%= password_field_tag "user[password]", '', class: "input-small", placeholder: "Password" %>
+            <%= button_tag "Sign in", class: "btn" %>
           <% end %>
         <% end %>
       </div>

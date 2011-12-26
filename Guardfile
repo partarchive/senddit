@@ -29,3 +29,18 @@ guard 'rspec', :version => 2, :rspec_env => { 'RAILS_ENV' => 'test' } do
   # Capybara request specs
   watch(%r{^app/views/(.+)/.*\.(erb|haml)$})          { |m| "spec/requests/#{m[1]}_spec.rb" }
 end
+
+guard 'rails' do
+  watch('Gemfile.lock')
+  watch(%r{^(config|lib)/.*})
+end
+
+
+guard 'livereload' do
+  watch(%r{app/.+\.(erb|haml)})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{(public/|app/assets).+\.(css|js|html)})
+  watch(%r{(app/assets/.+\.css)\.s[ac]ss}) { |m| m[1] }
+  watch(%r{(app/assets/.+\.js)\.coffee}) { |m| m[1] }
+  watch(%r{config/locales/.+\.yml})
+end

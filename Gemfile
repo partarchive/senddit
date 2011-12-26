@@ -43,6 +43,10 @@ group :test, :development do
   gem 'guard'
   gem 'guard-spork'
 
+  gem 'guard-rails'
+
+  gem 'guard-livereload'
+
   gem 'guard-rspec'
   gem 'rspec-rails'
 

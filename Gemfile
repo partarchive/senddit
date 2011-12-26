@@ -44,6 +44,8 @@ group :test, :development do
 
   gem 'guard-rails'
 
+  gem 'guard-livereload'
+
   gem 'guard-rspec'
   gem 'rspec-rails'
 

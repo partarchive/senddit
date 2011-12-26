@@ -46,4 +46,7 @@ group :test, :development do
   gem 'rspec-rails'
 
   gem 'growl', :require => false
+  
+  gem 'simplecov'
+  gem 'simplecov-rcov'
 end

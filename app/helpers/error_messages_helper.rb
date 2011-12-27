@@ -28,6 +28,12 @@ module ErrorMessagesHelper
     end
   end
 
+  def bootstrap_buttons_standard
+    content_tag(:div, class: "actions") do
+      submit_tag("Save", class: "btn primary") + " " + link_to("Back", :back, class: "btn")
+    end
+  end
+
   module FormBuilderAdditions
 
     def has_errors?(field)
@@ -41,6 +47,11 @@ module ErrorMessagesHelper
     def bootstrap_field(field, type)
       @template.bootstrap_field_for(@object, field, type)
     end
+
+    def bootstrap_buttons
+      @template.bootstrap_buttons_standard
+    end
+
   end
 end
 

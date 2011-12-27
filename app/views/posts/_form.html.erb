@@ -4,9 +4,6 @@
   <%= f.bootstrap_field :link, :url_field %>
   <%= f.bootstrap_field :email, :email_field %>
 
-  <div class="actions">
-    <%= f.submit class: "btn primary" %>
-    <%= link_to "Back", posts_path, class: "btn" %>
-  </div>
+  <%= f.bootstrap_buttons %>
 
 <% end %>

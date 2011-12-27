@@ -1,23 +1,18 @@
-<%%= form_for(@<%= singular_table_name %>) do |f| %>
-  <%% if @<%= singular_table_name %>.errors.any? %>
-    <div id="error_explanation">
-      <h2><%%= pluralize(@<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h2>
-
-      <ul>
-      <%% @<%= singular_table_name %>.errors.full_messages.each do |msg| %>
-        <li><%%= msg %></li>
-      <%% end %>
-      </ul>
-    </div>
-  <%% end %>
+<%%= form_for @<%= singular_table_name %> do |f| %>
 
 <% attributes.each do |attribute| -%>
-  <div class="field">
-    <%%= f.label :<%= attribute.name %> %><br />
-    <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+  <div class="clearfix <%%= "error" if f.has_errors?(:<%= attribute.name %>) %>">
+    <%%= f.label :<%= attribute.name %> %>
+    <div class="input">
+      <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+      <%%= f.errors_for :<%= attribute.name %> %>
+    </div>
   </div>
+
 <% end -%>
   <div class="actions">
-    <%%= f.submit %>
+    <%%= f.submit class: "btn primary" %>
+    <%%= link_to 'Cancel', <%= index_helper %>_path, class: "btn" %>
   </div>
+
 <%% end %>

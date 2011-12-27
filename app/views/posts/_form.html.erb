@@ -1,29 +1,32 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_for @post do |f| %>
 
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+  <div class="clearfix <%= "error" if f.has_errors?(:title) %>">
+    <%= f.label :title %>
+    <div class="input">
+      <%= f.text_field :title %>
+      <%= f.errors_for :title %>
     </div>
-  <% end %>
+  </div>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="clearfix <%= "error" if f.has_errors?(:link) %>">
+    <%= f.label :link %>
+    <div class="input">
+      <%= f.text_field :link %>
+      <%= f.errors_for :link %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :link %><br />
-    <%= f.text_field :link %>
+
+  <div class="clearfix <%= "error" if f.has_errors?(:email) %>">
+    <%= f.label :email %>
+    <div class="input">
+      <%= f.text_field :email %>
+      <%= f.errors_for :email %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn primary" %>
+    <%= link_to "Back", posts_path, class: "btn" %>
   </div>
+
 <% end %>

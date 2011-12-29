@@ -12,13 +12,13 @@ describe "Posts" do
   describe "POST /posts" do
     it "create post" do
       visit new_post_path
-      fill_in "post_title",  :with => "Moo title"
-      fill_in "post_link",   :with => "http:moo.com"
-      fill_in "post_email",  :with => "moo@moo.com"
+      post = build(:post)
+      fill_in "post_title",  :with => post.title
+      fill_in "post_link",   :with => post.link
+      fill_in "post_email",  :with => post.email
       click_button "Create Post"
-      save_and_open_page
       page.should have_content("Post was successfully created.")
-      page.should have_content("Moo title")
+      page.should have_content(post.title)
     end
   end
 end

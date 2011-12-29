@@ -25,6 +25,7 @@ describe "the signup process", type: :request do
       sign_up(@user)
 
       page.should have_content(@user.email)
+      current_path.should eq(root_path)
     end
   end
 

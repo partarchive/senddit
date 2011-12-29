@@ -16,6 +16,7 @@ describe "Posts" do
       fill_in "post_link",   :with => "http:moo.com"
       fill_in "post_email",  :with => "moo@moo.com"
       click_button "Create Post"
+      save_and_open_page
       page.should have_content("Post was successfully created.")
       page.should have_content("Moo title")
     end

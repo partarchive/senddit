@@ -45,5 +45,8 @@ group :test, :development do
   gem 'guard-rspec'
   gem 'rspec-rails'
 
+  gem 'capybara'
+  gem 'launchy'
+
   gem 'growl', :require => false
 end

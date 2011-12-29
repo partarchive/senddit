@@ -13,7 +13,7 @@ describe 'home page' do
     current_path.should == '/users/sign_in'
   end
   
-  it 'logs in using valid credentials' do
+  it 'logs in and out using valid credentials' do
     visit '/'
     
     user = create(:user)
@@ -24,6 +24,11 @@ describe 'home page' do
     
     current_path.should == '/'
     page.should have_content(user.email)
+    
+    click_link('Sign out')
+    
+    current_path.should == '/'
+    page.should have_no_content(user.email)
   end
   
   it 'logs in with invalid credentails and then logs into /users/sign_in with invalid credentials' do
@@ -64,5 +69,10 @@ describe 'home page' do
     end
     
     current_path.should == '/'
+    
+    click_link('Sign out')
+    
+    current_path.should == '/'
+    page.should have_no_content(user.email)
   end
 end

@@ -50,4 +50,5 @@ group :test, :development do
   gem 'capybara'
 
   gem 'growl', :require => false
+  gem 'ruby_gntp', :require => false
 end

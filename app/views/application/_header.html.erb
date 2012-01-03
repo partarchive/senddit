@@ -18,7 +18,7 @@
           <%= form_tag user_session_path do %>
             <%= text_field_tag "user[email]", '', class: "input-small", placeholder: "Email" %>
             <%= password_field_tag "user[password]", '', class: "input-small", placeholder: "Password" %>
-            <%= button_tag "Sign in", class: "btn" %>
+            <%= button_tag "Sign in", class: "btn", id: "header_sign_in" %>
           <% end %>
         <% end %>
       </div>

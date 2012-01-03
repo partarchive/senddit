@@ -7,6 +7,8 @@ Spork.prefork do
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
   require 'rspec/autorun'
+
+  # Add this to load Capybara integration:
   require 'capybara/rspec'
 
   # Requires supporting ruby files with custom matchers and macros, etc,
